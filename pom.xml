@@ -9,6 +9,7 @@
   <jstl.version>1.2</jstl.version>
   <mysql.connection.version>8.0.28</mysql.connection.version>
   <sitemesh.version>2.4.2</sitemesh.version>
+  <bcrypt.version>0.4</bcrypt.version>
   </properties>
   <dependencies>
   <!-- https://mvnrepository.com/artifact/jstl/jstl -->
@@ -29,7 +30,12 @@
     <artifactId>sitemesh</artifactId>
     <version>${sitemesh.version}</version>
 </dependency>
-  
+<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+<dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>${bcrypt.version}</version>
+</dependency> 
   </dependencies>
   <build>
     <plugins>
