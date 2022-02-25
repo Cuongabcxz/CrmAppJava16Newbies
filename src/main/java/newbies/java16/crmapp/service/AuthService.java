@@ -18,7 +18,6 @@ public class AuthService {
 		UserLoginDto dto = null;
 		try {
 			dto = dao.login(email, password);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -26,8 +25,19 @@ public class AuthService {
 		if (dto == null) {
 			return false;
 		} else {
-			String pass = BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt());
-			return BCrypt.checkpw(password, pass);
+			return BCrypt.checkpw(password,BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt()) );
 		}
+	}
+	
+	public boolean sigup(String email, String password, String name) {
+		try {
+			if (dao.checkUser(email)) {
+				return dao.createUser(email, password, name);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return false;
 	}
 }

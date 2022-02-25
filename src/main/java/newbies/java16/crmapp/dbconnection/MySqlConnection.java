@@ -18,8 +18,9 @@ public class MySqlConnection {
 				return connection;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-		System.out.println("Database connection couldn't be established");
+		System.out.println("Couldn't find driver to connect");
 		}
+		System.out.println("Database connection couldn't be established");
 		return null;
 	}
 }

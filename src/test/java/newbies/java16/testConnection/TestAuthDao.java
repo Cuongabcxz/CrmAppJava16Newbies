@@ -1,5 +1,6 @@
 package newbies.java16.testConnection;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
@@ -20,10 +21,23 @@ public void setup() {
 }
 	@Test
 public void checkLogin() throws SQLException {
-	String email = "ngochk@gmail.com";
-	String password = "ngoc123";
+	String email = "admin";
+	String password = "$2a$12$wnp7Rmh3y6Gnf3TJN..ik.CM5xy8yJXNn.uWn77zwultjxxX4s002";
 	UserLoginDto dto = dao.login(email, password);
 	assertTrue(dto!=null);
 	
 }
+//	@Test
+//	public void checkUserExist() throws SQLException {
+//		String email = "admin";
+//		assertFalse(dao.checkUser(email));
+//	}
+//	@Test
+//	public void createUser() throws SQLException {
+//		String email ="admin";
+//		String password = "admin";
+//		String name = "admin";
+//		assertTrue(dao.createUser(email, password, name));
+//	}
+	
 }
