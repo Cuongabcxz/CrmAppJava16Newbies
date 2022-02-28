@@ -3,8 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html dir="ltr">
+<html lang="en" dir="ltr">
 <head>
+<meta name="decorator" content="no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -84,7 +85,7 @@
 			</div>
 			<div class="form-group mb-5">
 				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" name="remember"
+					<input type="checkbox" class="custom-control-input" name="remember" checked
 						id="remember"> <label class="custom-control-label"
 						for="remember">Remember me</label>
 						<p class="text-danger">${message}</p>

@@ -1,7 +1,6 @@
 package newbies.java16.crmapp.servlet;
 
 import java.io.IOException;
-import java.sql.Array;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import newbies.java16.crmapp.dao.AuthDao;
 import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.service.AuthService;
 import newbies.java16.crmapp.util.JspConst;
@@ -66,6 +64,7 @@ public class AuthServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		String remember = req.getParameter("remember");
+		String name = req.getParameter("name");
 		switch (path) {
 		case UrlConst.LOGIN:
 			if (remember !=null) {
@@ -84,6 +83,13 @@ public class AuthServlet extends HttpServlet {
 			}
 			break;
 		case UrlConst.SIGNUP:
+			if (service.sigup(email, password, name)) {
+				resp.sendRedirect(req.getContextPath()+UrlConst.LOGIN);
+			}else {
+				req.setAttribute("message", "Email has already been taken");
+				req.getRequestDispatcher(JspConst.SIGNUP).forward(req, resp);
+			}
+			
 			break;
 		default:
 			break;
