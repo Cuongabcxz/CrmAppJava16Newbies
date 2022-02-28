@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<meta name="decorator" content="no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -55,11 +56,11 @@
 		<h4 class="m-0">Sign up!</h4>
 		<p class="mb-5">Create an account now!</p>
 
-		<form action="index.html" novalidate>
+		<form action='<c:url value="<%=UrlConst.SIGNUP%>"></c:url>' method="post" novalidate>
 			<div class="form-group">
 				<label class="text-label" for="name_2">Name:</label>
 				<div class="input-group input-group-merge">
-					<input id="name_2" type="text" required=""
+					<input id="name_2" type="text" required="" name="name"
 						class="form-control form-control-prepended" placeholder="John Doe">
 					<div class="input-group-prepend">
 						<div class="input-group-text">
@@ -71,7 +72,7 @@
 			<div class="form-group">
 				<label class="text-label" for="email_2">Email Address:</label>
 				<div class="input-group input-group-merge">
-					<input id="email_2" type="email" required=""
+					<input id="email_2" type="email" required="" name ="email"
 						class="form-control form-control-prepended"
 						placeholder="john@doe.com">
 					<div class="input-group-prepend">
@@ -84,7 +85,7 @@
 			<div class="form-group">
 				<label class="text-label" for="password_2">Password:</label>
 				<div class="input-group input-group-merge">
-					<input id="password_2" type="password" required=""
+					<input id="password_2" type="password" required="" name ="password"
 						class="form-control form-control-prepended"
 						placeholder="Enter your password">
 					<div class="input-group-prepend">
@@ -100,6 +101,7 @@
 						id="terms" /> <label class="custom-control-label" for="terms">I
 						accept <a href="#">Terms and Conditions</a>
 					</label>
+					<p class="text-danger">${message}</p>
 				</div>
 			</div>
 			<div class="form-group text-center">
