@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>HomePage</title>
-<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
 </head>
 <body>
 		<!-- Header Layout Content -->
@@ -17,10 +18,10 @@
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a href="#">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">
-										Dashboard</li>
+										Homepage</li>
 								</ol>
 							</nav>
-							<h1 class="m-0">Dashboard</h1>
+							<h1 class="m-0">Homepage</h1>
 						</div>
 						<div class="ml-auto">
 							<a href="" class="btn btn-light"><i
@@ -61,10 +62,7 @@
 							</div>
 						</div>
 					</div>
-
-
 				</div>
-
 				<div class="card">
 					<div
 						class="card-header card-header-large bg-white d-flex align-items-center">
