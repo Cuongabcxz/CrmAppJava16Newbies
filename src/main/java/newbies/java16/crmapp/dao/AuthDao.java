@@ -14,7 +14,7 @@ public UserLoginDto login(String email, String password) throws SQLException {
 	Connection connection = MySqlConnection.getConnection();
 	UserLoginDto dto = null;
 	try  {
-		String query  = "SELECT email,password FROM user WHERE email LIKE ? AND password LIKE ?";
+		String query  = "SELECT email,password,name,role_id FROM user WHERE email LIKE ? AND password LIKE ?";
 		PreparedStatement statement = connection.prepareStatement(query);
 		statement.setString(1, email);
 		statement.setString(2, password);
@@ -23,6 +23,8 @@ public UserLoginDto login(String email, String password) throws SQLException {
 			dto = new UserLoginDto();
 			dto.setEmail(result.getString(1));
 			dto.setPassword(result.getString(2));
+			dto.setName(result.getString(3));
+			dto.setRoleId(result.getInt(4));
 		}
 	} catch (Exception e) {
 		System.out.println("Couldn't excute query");

@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import newbies.java16.crmapp.dto.UserLoginDto;
+import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.service.AuthService;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.ServletConst;
 import newbies.java16.crmapp.util.UrlConst;
 
-@WebServlet(name = ServletConst.AUTH, urlPatterns = { UrlConst.LOGIN, UrlConst.SIGNUP })
+@WebServlet(name = ServletConst.AUTH, urlPatterns = { UrlConst.LOGIN, UrlConst.SIGNUP,UrlConst.LOGOUT })
 public class AuthServlet extends HttpServlet {
 
 	/**
@@ -26,7 +27,7 @@ public class AuthServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private AuthService service;
-	private UserLoginDto dto;
+	private User user;
 
 	@Override
 	public void init() throws ServletException {
@@ -54,12 +55,9 @@ public class AuthServlet extends HttpServlet {
 			req.getRequestDispatcher(JspConst.SIGNUP).forward(req, resp);
 			break;
 		case UrlConst.LOGOUT:
-			Object userLogout = req.getSession().getAttribute("userlogin");
-			if (userLogout != null) {
 				HttpSession session = req.getSession();
 				session.removeAttribute("userlogin");
 				resp.sendRedirect(req.getContextPath()+UrlConst.LOGIN);
-			}
 			break;
 		default:
 			break;
@@ -81,9 +79,9 @@ public class AuthServlet extends HttpServlet {
 				resp.addCookie(cookie);
 			}
 			if (service.login(email, password)) {
-				dto = new UserLoginDto(email, password);
+				user = service.toUser(email, password);
 				HttpSession session = req.getSession();
-				session.setAttribute("userlogin", dto);
+				session.setAttribute("userlogin", user);
 				resp.sendRedirect(req.getContextPath() + UrlConst.HOMEPAGE);
 			} else {
 				req.setAttribute("message", "Email or passoword is incorrect");
