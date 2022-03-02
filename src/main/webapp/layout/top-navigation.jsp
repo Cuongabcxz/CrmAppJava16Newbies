@@ -1,8 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ page import="newbies.java16.crmapp.util.UrlConst" %>
 <div id="header" class="mdk-header bg-dark js-mdk-header m-0" data-fixed
 	data-effects="waterfall">
 	<div class="mdk-header__content">
 		<div
-			class="navbar navbar-expand-sm navbar-main navbar-dark bg-dark pr-0"
+			class="navbar navbar-expand-sm navbar-main navbar-light bg-light pr-0"
 			id="navbar" data-primary>
 			<div class="container">
 				<!-- Navbar toggler -->
@@ -55,7 +59,7 @@
 											</div>
 										</div>
 										<div class="flex">
-											<a href="">Tiến Hoàng</a> đã bình luận trong <a href="">Stack</a><br />
+											<a href="">Tiến Hoàng</a> Đã bình luận trong <a href="">Stack</a><br />
 											<small class="text-muted">1 phút trước</small>
 										</div>
 									</div>
@@ -71,7 +75,7 @@
 											</a>
 										</div>
 										<div class="flex">
-											Người dùng mới <a href="#">Trần Minh</a> đã đăng ký tài khoản<br />
+											Người dùng mới <a href="#">Trần Minh</a> Đã đăng ký tài khoản<br />
 											<small class="text-muted">1 giờ trước.</small>
 										</div>
 									</div>
@@ -85,11 +89,9 @@
 											</a>
 										</div>
 										<div class="flex">
-											<a href="#">Mẫn Nhi</a> <small class="text-muted">nhắn
-												bạn:</small><br />
-											<div>Chào mọi người, vui lòng lưu ý cuộc hẹn lúc 3 giờ
-												chiều</div>
-											<small class="text-muted">2 phút trước đây</small>
+											<a href="#">Mẫn Nhi</a> <small class="text-muted">nhắn bạn:</small><br />
+											<div>Chào mọi người, vui lòng lưu ý cuộc hẹn lúc 3 giờ chiều</div>
+											<small class="text-muted">2 phút trước</small>
 										</div>
 									</div>
 
@@ -103,7 +105,7 @@
 											</div>
 										</div>
 										<div class="flex">
-											<a href="">Tuấn</a> đã bình luận trong <a href="">Stack</a><br />
+											<a href="">Tuấn</a> Đã bình luận trong <a href="">Stack</a><br />
 											<small class="text-muted">1 phút trước</small>
 										</div>
 									</div>
@@ -120,15 +122,15 @@
 					<li class="nav-item dropdown"><a href="#account_menu"
 						class="nav-link dropdown-toggle" data-toggle="dropdown"
 						data-caret="false"> <span class="avatar avatar-sm"> <span
-								class="avatar-title rounded-circle bg-warning"> Tuấn </span>
+								class="avatar-title rounded-circle bg-warning">${dto.email}</span>
 						</span>
 					</a>
 						<div id="account_menu" class="dropdown-menu dropdown-menu-right">
 							<div class="dropdown-item-text dropdown-item-text--lh">
 								<div>
-									<strong>Thanh Tuấn</strong>
+									<strong>${dto.email}</strong>
 								</div>
-								<div>@tuanphan</div>
+								<div>${dto.email}</div>
 							</div>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item active" href="dashboard.html">
@@ -136,7 +138,7 @@
 								profile </a> <a class="dropdown-item" href="account-edit.html">
 								Edit account </a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="login.html">Logout</a>
+							<a class="dropdown-item" href='<c:url value="${UrlConst.LOGOUT}"></c:url>'>Logout</a>
 						</div></li>
 				</ul>
 			</div>

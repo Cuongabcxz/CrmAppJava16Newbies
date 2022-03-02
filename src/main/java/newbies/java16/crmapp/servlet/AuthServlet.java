@@ -53,6 +53,14 @@ public class AuthServlet extends HttpServlet {
 		case UrlConst.SIGNUP:
 			req.getRequestDispatcher(JspConst.SIGNUP).forward(req, resp);
 			break;
+		case UrlConst.LOGOUT:
+			Object userLogout = req.getSession().getAttribute("userlogin");
+			if (userLogout != null) {
+				HttpSession session = req.getSession();
+				session.removeAttribute("userlogin");
+				resp.sendRedirect(req.getContextPath()+UrlConst.LOGIN);
+			}
+			break;
 		default:
 			break;
 		}
