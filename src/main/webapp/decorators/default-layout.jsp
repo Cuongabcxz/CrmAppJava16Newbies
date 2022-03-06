@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<dec:head></dec:head>
 <jsp:include page="/layout/header.jsp"></jsp:include>
 <title><dec:title /></title>
 </head>
@@ -13,7 +13,7 @@
 	<div class="preloader"></div>
 	<div class="mdk-header-layout js-mdk-header-layout">	
 		<jsp:include page="/layout/top-navigation.jsp"></jsp:include>
-		<dec:body/>
+		<dec:body></dec:body>
 	</div>
 	<!-- App Settings FAB -->
 	<div id="app-settings" hidden>

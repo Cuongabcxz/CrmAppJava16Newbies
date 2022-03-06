@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class MySqlConnection {
 	private static Connection connection = null;
-	private final static String URL = "jdbc:mysql://localhost:3306/crm";
+	private final static String URL = "jdbc:mysql://localhost:3307/crm";
 	private final static String USERNAME = "root";
-	private final static String PASSWORD = "tram";
+	private final static String PASSWORD = "1234";
 
 	public static Connection getConnection() {
 		try {
@@ -16,11 +16,12 @@ public class MySqlConnection {
 			if (connection == null || connection.isClosed()) {
 				connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 				return connection;
+			}else {
+				return connection;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-		System.out.println("Couldn't find driver to connect");
+		System.out.println("DB connection couldn't be established");
 		}
-		System.out.println("Database connection couldn't be established");
 		return null;
 	}
 }
