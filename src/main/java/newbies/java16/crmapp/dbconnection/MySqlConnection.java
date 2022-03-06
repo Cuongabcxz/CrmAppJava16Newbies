@@ -16,11 +16,12 @@ public class MySqlConnection {
 			if (connection == null || connection.isClosed()) {
 				connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 				return connection;
+			}else {
+				return connection;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-		System.out.println("Couldn't find driver to connect");
+		System.out.println("DB connection couldn't be established");
 		}
-		System.out.println("Database connection couldn't be established");
 		return null;
 	}
 }

@@ -24,13 +24,11 @@ public class HomeServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		req.setCharacterEncoding("UTF-8");
 		String path = req.getServletPath();
 		switch (path) {
 		case UrlConst.HOMEPAGE:
 			User user = (User) req.getSession().getAttribute("userlogin");
-			req.setAttribute("user", user);
+			req.setAttribute("userlogin", user);
 			req.getRequestDispatcher(JspConst.HOMEPAGE).forward(req, resp);
 			break;
 
