@@ -27,15 +27,15 @@
 					<li class="nav-item dropdown"><a href="#account_menu"
 						class="nav-link dropdown-toggle" data-toggle="dropdown"
 						data-caret="false"> <span class="avatar avatar-sm"> <span
-								class="avatar-title rounded-circle bg-warning">${user.name}</span>
+								class="avatar-title rounded-circle bg-warning">${userlogin.name}</span>
 						</span>
 					</a>
 						<div id="account_menu" class="dropdown-menu dropdown-menu-right">
 							<div class="dropdown-item-text dropdown-item-text--lh">
 								<div>
-									<strong>${user.name}</strong>
+									<strong>${userlogin.name}</strong>
 								</div>
-								<div>${user.email}</div>
+								<div>${userlogin.email}</div>
 							</div>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item active"
@@ -70,11 +70,11 @@
 							class="nav-link dropdown-toggle" data-toggle="dropdown">
 								Project </a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#"> Manage Project </a> <a
-									class="dropdown-item" href="#"> Project Create Project </a>
+								<a class="dropdown-item" href='<c:url value="${UrlConst.PROJECT}"></c:url>'> Manage Project </a> <a
+									class="dropdown-item" href='<c:url value="${UrlConst.CREATEPROJECT}"></c:url>'> Project Create Project </a>
 							</div></li>
 						<li class="nav-item dropdown"><a href="#"
-							class="nav-link dropdown-toggle" data-toggle="dropdown" <c:if test="${user.role!=1}">hidden</c:if>> User
+							class="nav-link dropdown-toggle" data-toggle="dropdown" <c:if test="${userlogin.role!=1}">hidden</c:if>> User
 						</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="#"> User List </a> 
@@ -86,3 +86,4 @@
 			</div>
 		</div>
 	</div>
+	
