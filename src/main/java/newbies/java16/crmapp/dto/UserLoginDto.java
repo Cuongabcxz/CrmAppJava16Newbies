@@ -1,6 +1,8 @@
 package newbies.java16.crmapp.dto;
 
 public class UserLoginDto {
+	
+	private String id;
 	private String email;
 	private String password;
 	private String name;
@@ -14,6 +16,14 @@ public class UserLoginDto {
 	}
 
 	public UserLoginDto() {
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
