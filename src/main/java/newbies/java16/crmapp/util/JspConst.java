@@ -9,5 +9,5 @@ public final static String HOMEPAGE="/WEB-INF/views/home/homepage.jsp";
 public final static String PROJECT="/WEB-INF/views/project/project.jsp";
 public final static String CREATEPROJECT="/WEB-INF/views/project/create_project.jsp"; 
 
-public final static String USERLIST = "/WEB-INF/views/users/list.jsp";
+public final static String USERLIST = "/WEB-INF/views/users/list_user.jsp";
 }
