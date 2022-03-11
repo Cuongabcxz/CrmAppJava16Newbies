@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Project {
 	private String name;
-	private String nameOfManager;
+	private String mailOfManager;
 	private String description;
 	private Date startDate;
 	private Date endDate;
@@ -30,11 +30,11 @@ public class Project {
 	}
 
 	public String getNameOfManager() {
-		return nameOfManager;
+		return mailOfManager;
 	}
 
 	public void setNameOfManager(String nameOfManager) {
-		this.nameOfManager = nameOfManager;
+		this.mailOfManager = nameOfManager;
 	}
 
 	public Date getStartDate() {

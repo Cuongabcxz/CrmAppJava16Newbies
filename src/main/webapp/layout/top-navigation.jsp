@@ -40,8 +40,8 @@
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item active"
 								href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'>
-								Homepage </a> <a class="dropdown-item" href="#"> My profile </a> <a
-								class="dropdown-item" href="#"> Edit account </a>
+								Homepage </a>
+								<a class="dropdown-item" href="#"> Edit account </a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item"
 								href='<c:url value="${UrlConst.LOGOUT}"></c:url>'>Logout</a>
@@ -71,14 +71,14 @@
 								Project </a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='<c:url value="${UrlConst.PROJECT}"></c:url>'> Manage Project </a> <a
-									class="dropdown-item" href='<c:url value="${UrlConst.CREATEPROJECT}"></c:url>'> Project Create Project </a>
+									class="dropdown-item" href='<c:url value="${UrlConst.PROJECTCREATE}"></c:url>'> Project Create Project </a>
 							</div></li>
 						<li class="nav-item dropdown"><a href="#"
 							class="nav-link dropdown-toggle" data-toggle="dropdown" <c:if test="${userlogin.role!=1}">hidden</c:if>> User
 						</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='<c:url value="${UrlConst.USERLIST}"></c:url>'> User List </a> 
-								<a class="dropdown-item" href="#"> Create User </a>
+								<a class="dropdown-item" href='<c:url value="${UrlConst.USERCREATE }"></c:url>'> Create User </a>
 							</div></li>
 						<li class="nav-item"><a class="nav-link" href="#">Task</a></li>
 					</ul>

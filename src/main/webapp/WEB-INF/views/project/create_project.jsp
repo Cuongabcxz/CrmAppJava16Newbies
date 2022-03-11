@@ -46,7 +46,7 @@
 						<p class="text-muted">You must fill all of option!</p>
 					</div>
 					<div class="col-lg-8 card-form__body card-body">
-						<form action='<c:url value="<%=UrlConst.CREATEPROJECT%>"></c:url>'method="post">
+						<form action='<c:url value="<%=UrlConst.PROJECTCREATE%>"></c:url>'method="post">
 							<div class="form-group">
 								<label for="projectName">Project name:</label> <input type="projectName"
 									class="form-control" name="projectName" id="projectName">

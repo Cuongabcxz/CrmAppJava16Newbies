@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ page import="newbies.java16.crmapp.util.UrlConst" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 						<div>
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item"><a href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'>Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">
 										Homepage</li>
 								</ol>
@@ -56,7 +57,7 @@
 										class="material-icons text-white icon-18pt"> person_add </i>
 									</span>
 								</div>
-								<a href="#" class="text-dark"> <strong>Create New
+								<a href='<c:url value="${UrlConst.USERCREATE}"></c:url>' class="text-dark"> <strong>Create New
 										User</strong>
 								</a>
 							</div>

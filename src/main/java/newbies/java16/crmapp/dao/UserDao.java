@@ -20,7 +20,7 @@ public class UserDao {
 			ResultSet res = statement.executeQuery();
 			while(res.next()) {
 				UserLoginDto model = new UserLoginDto();
-				model.setId(res.getString("id"));
+				model.setId(res.getInt("id"));
 				model.setName(res.getString("name"));
 				model.setEmail(res.getString("email"));
 				model.setAddress(res.getString("address"));
@@ -35,7 +35,29 @@ public class UserDao {
 		return models;
 	}
 	
-	public void insert(UserLoginDto user) {
+	public UserLoginDto findUserByEmail(String email) {
+		String query = "SELECT * FROM crm.user WHERE email like ?";
+		UserLoginDto dto=null;
+		try( Connection connection = MySqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, email);
+			ResultSet res = statement.executeQuery();
+			if (res.next()) {
+				dto = new UserLoginDto();
+				dto.setId(res.getInt("id"));
+				dto.setName(res.getString("name"));
+				dto.setEmail(res.getString("email"));
+				dto.setAddress(res.getString("address"));
+				dto.setPhone(res.getString("phone"));
+				dto.setRoleId(res.getInt("role_id"));
+			}
+			return dto;
+		} catch(Exception e) {
+			System.out.println("Could not connect to DB");
+		}
+		return dto;
+	}
+	public boolean create(UserLoginDto user) {
 		
 		String query = "INSERT INTO crm.user(name, email, address, phone, password, role_id) values (?,?,?,?,?,?)";
 		
@@ -47,12 +69,14 @@ public class UserDao {
 			statement.setString(4, user.getPhone());
 			statement.setString(5, user.getPassword());
 			statement.setInt(6, user.getRoleId());
-			
-			 statement.executeUpdate();		
+			int result=statement.executeUpdate();
+			if (result > 0) {
+				return true;
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		return false;
 	}
 	
 	public void update(String id, String name, String email, String address, String phone, Integer role_id) {

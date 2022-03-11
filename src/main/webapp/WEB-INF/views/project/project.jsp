@@ -18,7 +18,7 @@
 						<div>
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item"><a  href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'>Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">
 										Manager Project</li>
 								</ol>
@@ -62,16 +62,21 @@
 											</div>
 										</td>
 										<td><c:choose>
-										<c:when test="${projects.nameOfManager.equals('admin')}"><span class="badge badge-warning">Chưa phân bổ</span></c:when>
+										<c:when test="${projects.nameOfManager.equals('admin')}"><span class="badge badge-warning">Pending</span></c:when>
 										<c:otherwise><span class="badge badge-success">${projects.nameOfManager}</span></c:otherwise>
 										</c:choose></td>
 										<td><small class="text-muted">${projects.startDate}</small></td>
 										<td><small class="text-muted">${projects.endDate}</small></td>
 										<td>
-										<button type="button" class="btn btn-warning " 
+										<button type="button" style="float:left;margin-right:4px;" class="btn btn-warning " 
 										data-toggle="modal" data-target="#modal-signup"><i class="material-icons">settings</i></button>
+										<form action='<c:url value="<%=UrlConst.PROJECTDELETE%>"></c:url>' method="post">
+										<input type="text" value="${projects.name}" name="projectName" hidden >
+										<button type="submit" class="btn btn-danger">
+                                       <i class="material-icons">close</i></button>
+                                       </form>
 										</td>
-									</tr>
+										</tr>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -91,7 +96,7 @@
                             </a>
                         </div>
 
-                        <form action='<c:url value="<%=UrlConst.UPDATEPROJECT%>"></c:url>' method="post" novalidate>
+                        <form action='<c:url value="<%=UrlConst.PROJECTUPDATE%>"></c:url>' method="post" novalidate>
                             <div class="form-group">
                                 <label for="username">Project name:</label>
                                 <select  name="projectName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
@@ -102,16 +107,11 @@
                                 </optgroup>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="username">Manager mail:</label>
-                                <select  name="projectName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
-                                <optgroup label="Project name">
-                                <c:forEach var="projects" items="${projects}">
-                                <option>${projects.nameOfManager}</option>
-                                </c:forEach>
-                                </optgroup>
-                                </select>
-                            </div>
+                          	<div class="form-group">
+								<label for="email">Email of manager:</label> <input
+									class="form-control" type="email" id="email" name="email"
+										placeholder="Enter manager email address" />
+							</div>	
                             <div class="form-group">
                                 <label for="start_date">Start Date:</label>
                                  <input id="dateRangePickerSample01" name="start_day" type="text" class="form-control" 

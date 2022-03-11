@@ -13,13 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mysql.cj.Session;
+
+import newbies.java16.crmapp.dao.UserDao;
+import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.model.Project;
 import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.service.ProjectService;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.UrlConst;
 
-@WebServlet(name = "PROJECT", urlPatterns = { UrlConst.PROJECT, UrlConst.UPDATEPROJECT, UrlConst.CREATEPROJECT })
+@WebServlet(name = "PROJECT", urlPatterns = { UrlConst.PROJECT
+											, UrlConst.PROJECTUPDATE
+											, UrlConst.PROJECTCREATE
+											, UrlConst.PROJECTDELETE})
 public class ProjectServlet extends HttpServlet {
 
 	/**
@@ -28,10 +35,12 @@ public class ProjectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProjectService service;
 	private Project project;
+	private UserDao dao;
 
 	@Override
 	public void init() throws ServletException {
 		service = new ProjectService();
+		dao = new UserDao();
 	}
 
 	@Override
@@ -46,7 +55,7 @@ public class ProjectServlet extends HttpServlet {
 			session.setAttribute("projects", projects);
 			req.getRequestDispatcher(JspConst.PROJECT).forward(req, resp);
 			break;
-		case UrlConst.CREATEPROJECT:
+		case UrlConst.PROJECTCREATE:
 			req.getRequestDispatcher(JspConst.CREATEPROJECT).forward(req, resp);
 			break;
 		default:
@@ -56,38 +65,47 @@ public class ProjectServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name;
-		String start_day;
-		String end_day;
-		String description;
-		String owner;
+		String name = req.getParameter("projectName");
 		String path = req.getServletPath();
 		switch (path) {
-		case UrlConst.UPDATEPROJECT:
-			name = req.getParameter("projectName");
-			start_day = req.getParameter("start_day");
-			end_day = req.getParameter("end_day");
-			int id = service.findIdByName(name);
-			service.update(start_day, end_day, id);
+		case UrlConst.PROJECTUPDATE:
+			String start_day = req.getParameter("start_day").replace("/", "-");
+			String end_day = req.getParameter("end_day").replace("/", "-");
+			String email = req.getParameter("email");
+			try {
+				UserLoginDto dto = dao.findUserByEmail(email);
+				if (dto.getRoleId() != 3) {
+					int id = service.findIdByName(name);
+					service.update(start_day, end_day, dto.getId(), id);
+				}
+			} catch (NullPointerException e) {
+			}
 			List<Project> projects = service.projectDtoToProject();
 			req.setAttribute("projects", projects);
 			req.getRequestDispatcher(JspConst.PROJECT).forward(req, resp);
 			break;
-		case UrlConst.CREATEPROJECT:
-			name = req.getParameter("projectName");
-			start_day = req.getParameter("start_day").replace("/", "-");
-			end_day = req.getParameter("end_day").replace("/","-");
-			description = req.getParameter("description");
-			owner = req.getParameter("owner");
-			SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-				project = new Project(name, description,Date.valueOf(start_day), Date.valueOf(end_day), Integer.parseInt(owner));
+		case UrlConst.PROJECTCREATE:
+			String start_day1 = req.getParameter("start_day").replace("/", "-");
+			String end_day1 = req.getParameter("end_day").replace("/", "-");
+			String description = req.getParameter("description");
+			String owner = req.getParameter("owner");
+			project = new Project(name, description, Date.valueOf(start_day1), Date.valueOf(end_day1),
+					Integer.parseInt(owner));
 			try {
 				service.createProject(project);
 			} catch (SQLException e) {
 				System.out.println("Fail");
 			}
-				req.setAttribute("message", "Completed !");
-				req.getRequestDispatcher(JspConst.CREATEPROJECT).forward(req, resp);
+			req.setAttribute("message", "Completed !");
+			req.getRequestDispatcher(JspConst.CREATEPROJECT).forward(req, resp);
+			break;
+		case UrlConst.PROJECTDELETE:
+			int id = service.findIdByName(name);
+			try {
+				service.deleteProject(id);
+			} catch (SQLException e) {
+			}
+			resp.sendRedirect(req.getContextPath() + UrlConst.PROJECT);
 			break;
 		default:
 			break;

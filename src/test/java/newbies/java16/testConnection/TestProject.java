@@ -31,13 +31,18 @@ public class TestProject {
 //		List<ProjectDto> list = dao.findAll();
 //		assertTrue(list.size() > 0);
 //	}
+//	@Test
+//	public void create() throws ParseException {
+//		String date ="2020/10/19";
+//		String text = date.replace("/", "-");
+//		Date date2 = Date.valueOf(text);
+//		System.out.println(date2);
+//		assertTrue(date2!=null);
+//	}
 	@Test
-	public void create() throws ParseException {
-		String date ="2020/10/19";
-		String text = date.replace("/", "-");
-		Date date2 = Date.valueOf(text);
-		System.out.println(date2);
-		assertTrue(date2!=null);
+	public void update() throws SQLException {
+		String date ="2020-10-20";
+		String date1 ="2020-10-22";
+		assertTrue(dao.update(date, date1, 6, 3));
 	}
-	
 }
