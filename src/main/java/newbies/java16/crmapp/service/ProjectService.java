@@ -35,14 +35,17 @@ public class ProjectService {
 	public int findIdByName(String name) {
 		return dao.findIdByName(name);
 	}
-	public void update(String start_day, String end_date, int id) {
+	public void update(String start_day, String end_date, int owner, int id) {
 		try {
-			dao.update(start_day, end_date, id);
+			dao.update(start_day, end_date,owner, id);
 		} catch (SQLException e) {
 			System.out.println("Fail to connect");
 		}
 	}
 	public void createProject(Project project) throws SQLException {
 		dao.createProject(project);
+	}
+	public boolean deleteProject(int id) throws SQLException {
+		return dao.deleteProject(id);
 	}
 }

@@ -15,21 +15,22 @@ import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.UrlConst;
 
-@WebServlet(name = "userServlet", urlPatterns = {UrlConst.USERLIST, UrlConst.USERDELETE, UrlConst.USERUPDATE} )
-public class UserServlet extends HttpServlet{
+@WebServlet(name = "userServlet", urlPatterns = { UrlConst.USERLIST, UrlConst.USERDELETE, UrlConst.USERUPDATE,
+		UrlConst.USERCREATE })
+public class UserServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private UserDao userDao = null;
-	
+
 	@Override
 	public void init() throws ServletException {
 		userDao = new UserDao();
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
@@ -42,17 +43,17 @@ public class UserServlet extends HttpServlet{
 			userDao.delete(req.getParameter("id"));
 			req.setAttribute("users", userDao.getAll());
 			req.getRequestDispatcher(JspConst.USERLIST).forward(req, resp);
+		case UrlConst.USERCREATE:
+			req.getRequestDispatcher(JspConst.USERCREATE).forward(req, resp);
+			break;
 		default:
 			break;
 		}
-		
-		
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
+		String path = req.getServletPath();
 		UserLoginDto user = new UserLoginDto();
 		String name = req.getParameter("username");
 		String email = req.getParameter("email");
@@ -61,25 +62,28 @@ public class UserServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		String phone = req.getParameter("phone");
 		Integer role_id = Integer.parseInt(req.getParameter("role_id"));
-		user.setName(name);
 		user.setEmail(email);
-		user.setAddress(address);		
+		user.setAddress(address);
 		user.setPhone(phone);
-		user.setId(id);
 		user.setPassword(password);
 		user.setRoleId(role_id);
-		if(req.getParameter("id") != null && !req.getParameter("id").isEmpty()) {
+		user.setName(name);
+		switch (path) {
+		case UrlConst.USERCREATE:
+			if(userDao.create(user)) {
+				req.setAttribute("message1", "Congratulations ! ");
+			}else {
+				req.setAttribute("message2", "Email has already been taken ! ");
+			}
+			req.getRequestDispatcher(JspConst.USERCREATE).forward(req, resp);
+			break;
+		case UrlConst.USERUPDATE:
 			userDao.update(id, name, email, address, phone, role_id);
-			
-		} else {
-			userDao.insert(user);
-			
+			req.setAttribute("users", userDao.getAll());
+			req.getRequestDispatcher(JspConst.USERLIST).forward(req, resp);
+			break;
+		default:
+			break;
 		}
-		req.setAttribute("users", userDao.getAll());
-		req.getRequestDispatcher(JspConst.USERLIST).forward(req, resp);
-
 	}
-	
-
-		
 }

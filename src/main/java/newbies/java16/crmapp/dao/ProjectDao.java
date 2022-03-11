@@ -52,20 +52,26 @@ public class ProjectDao {
 		return id;
 	}
 	
-	public void update(String start_day, String end_date, int id) throws SQLException {
-		String query = "UPDATE project SET start_date = ?, end_date = ? WHERE id = ?";
+	public boolean update(String start_day, String end_date,int owner, int id) throws SQLException {
+		String query = "UPDATE project SET start_date = ?, end_date = ?, owner = ? WHERE id = ?";
 		Connection connection = MySqlConnection.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, start_day);
 			statement.setString(2, end_date);
-			statement.setInt(3,id);
+			statement.setInt(3,owner);
+			statement.setInt(4,id);
 			statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if (result>0) {
+				return true;
+			}
 		} catch (SQLException e) {
-			System.out.println("Couldn't connect to DB");
+			System.out.println("Couldn't update DB");
 		}finally {
 			connection.close();
 		}
+		return false;
 	}
 	public void createProject(Project project) throws SQLException {
 		String query="INSERT INTO project(name,description,start_date,end_date,owner) VALUES(?,?,?,?,?)";
@@ -83,5 +89,22 @@ public class ProjectDao {
 		}finally {
 			connection.close();
 		}
+	}
+	public boolean deleteProject(int id) throws SQLException {
+		String query="DELETE FROM project WHERE id = ?";
+		Connection connection = MySqlConnection.getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, id);
+			int result = statement.executeUpdate();
+			if (result>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Couldn't delete DB");
+		}finally {
+			connection.close();
+		}
+		return false;
 	}
 }

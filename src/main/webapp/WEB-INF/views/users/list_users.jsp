@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User List</title>
+<title>List Users</title>
+<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
 </head>
 <body>
 	<script>
@@ -26,73 +27,31 @@
 			document.form.phone.value = phone;
 		}
 	</script>
-	<br>
-	<button type="button" class="btn btn-primary d-inline-flex"
-		data-toggle="modal" data-target="#modal-signup"
-		style="float: right; margin-right: 24%;">Insert Account</button>
-	<div id="modal-signup" class="modal fade" tabindex="-1" role="dialog"
-		aria-hidden="true" data-backdrop="false">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="px-3">
-						<div class="d-flex justify-content-center mt-2 mb-4 navbar-light">
-							<a href="dashboard.html" class="navbar-brand"
-								style="min-width: 0"> <img class="navbar-brand-icon"
-								src="assets/images/logo.png" width="250" alt="Cybersoft">
-							</a>
+	<!-- Header Layout Content -->
+			<div class="container page__heading-container">
+				<div class="page__heading">
+					<div class="d-flex align-items-center">
+						<div>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb mb-0">
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">
+										List Users</li>
+								</ol>
+							</nav>
+							<h1 class="m-0">List Users</h1>
 						</div>
-
-						<form action='<c:url value="${UrlConst.USERLIST }"></c:url>'
-							method="post">
-							<div class="form-group">
-								<label for="username">Name:</label> <input class="form-control"
-									type="text" id="username" name="username"
-									placeholder="Enter your name" />
-							</div>
-							<div class="form-group">
-								<label for="email">Email Address:</label> <input
-									class="form-control" type="email" id="email" name="email"
-									placeholder="Enter your email address" />
-							</div>
-							<div class="form-group">
-								<label for="password">Password:</label> <input
-									class="form-control" type="password" id="password"
-									name="password" placeholder="Enter your password" />
-							</div>
-							<div class="form-group">
-								<label for="address">Address:</label> <input
-									class="form-control" type="text" required="" id="address"
-									name="address" placeholder="Enter your address" />
-							</div>
-							<div class="form-group">
-								<label for="phone">Phone:</label> <input class="form-control"
-									type="phone" required="" id="text" name="phone"
-									placeholder="Enter your phone number" />
-							</div>
-							<div class="form-group">
-								<label for="role_id">Role Id:</label> <select id="role"
-									name="role_id" data-toggle="select" class="form-control">
-									<option selected="" value="1">Admin</option>									
-								</select>
-							</div>
-							<div class="form-group text-center">
-								<button class="btn btn-primary" type="submit">Create
-									Account</button>
-							</div>
-							
-						</form>
+						<div class="ml-auto">
+							<a href="" class="btn btn-light"><i
+								class="material-icons icon-16pt text-muted mr-1">settings</i>
+								Settings</a>
+						</div>
 					</div>
 				</div>
-				<!-- // END .modal-body -->
 			</div>
-			<!-- // END .modal-content -->
-		</div>
-		<!-- // END .modal-dialog -->
-	</div>
 	<div class="container">
 		<table class="table  table-hover">
-			<h3 style="text-align: center;">DANH SÁCH NHÂN VIÊN</h3>
+			<h3 style="text-align: center;">EMPLOYEE LIST REPORT</h3>
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
@@ -100,7 +59,7 @@
 					<th scope="col">Email</th>
 					<th scope="col">Address</th>
 					<th scope="col">Phone</th>
-					<th scope="col">Hành động</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -116,7 +75,7 @@
 								<input type="button" class="btn btn-primary" data-toggle="modal"
 									data-target="#modal-edit" value="update" onclick="show()" />
 								<form
-									action="<%=request.getContextPath() + UrlConst.USERDELETE%>"
+									action='<c:url value="<%=UrlConst.USERDELETE%>"></c:url>'
 									method="get">
 									<input type="hidden" name="id" value="${item.id}"></input>
 									<button type="submit" class="btn btn-danger">Delete</button>
@@ -124,12 +83,10 @@
 							</div>
 						</td>
 					</tr>
-
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-
 
 	<div id="modal-edit" class="modal fade" tabindex="-1" role="dialog"
 		aria-hidden="true" data-backdrop="false">
@@ -144,10 +101,9 @@
 							</a>
 						</div>
 
-						<form action="<%=request.getContextPath() + UrlConst.USERLIST%>"
+						<form action='<c:url value="<%=UrlConst.USERUPDATE %>"></c:url>'
 							method="post" name="form">
 							<div class="form-group">
-
 								<input class="form-control" type="hidden" name="id">
 							</div>
 							<div class="form-group">
@@ -174,7 +130,8 @@
 							<div class="form-group">
 								<label for="role_id">Role Id:</label> <select id="role"
 									name="role_id" data-toggle="select" class="form-control">
-									<option selected="" value="1">Admin</option>							
+										<option value="2">MANAGER</option>
+                            			<option value="3">STAFF</option>						
 								</select>
 							</div>
 							<div class="form-group text-center">
@@ -189,8 +146,5 @@
 		</div>
 		<!-- // END .modal-dialog -->
 	</div>
-
-
-
 </body>
 </html>
