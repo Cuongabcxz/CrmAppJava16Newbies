@@ -51,7 +51,7 @@
 			</div>
 	<div class="container">
 		<table class="table  table-hover">
-			<h3 style="text-align: center;">EMPLOYEE LIST REPORT</h3>
+			<h3 style="text-align: center;">LIST OF EMPLOYEES</h3>
 			<thead>
 				<tr>
 					<th scope="col">ID</th>

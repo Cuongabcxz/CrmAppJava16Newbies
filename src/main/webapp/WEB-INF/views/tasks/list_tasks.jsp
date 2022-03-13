@@ -1,17 +1,15 @@
-<%@page import="newbies.java16.crmapp.util.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+    pageEncoding="UTF-8"%>
+    <%@ page import="newbies.java16.crmapp.util.UrlConst" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Manager Project</title>
-<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
+<title>List Task</title>
 </head>
 <body>
-		<!-- Header Layout Content -->
+<!-- Header Layout Content -->
 			<div class="container page__heading-container">
 				<div class="page__heading">
 					<div class="d-flex align-items-center">
@@ -20,10 +18,10 @@
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a  href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'>Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">
-										Manager Project</li>
+										Task</li>
 								</ol>
 							</nav>
-							<h1 class="m-0">Manager Project</h1>
+							<h1 class="m-0">Task</h1>
 						</div>
 						<div class="ml-auto">
 							<a href="" class="btn btn-light"><i
@@ -33,9 +31,9 @@
 					</div>
 				</div>
 			</div>
-	<div class="container page__container">
+<div class="container page__container">
 		<!-- Page Content -->
-			<h3 style="text-align: center;">LIST OF PROJECTS</h3>
+		<h3 style="text-align: center;">LIST OF TASKS</h3>
 		<div class="card card-form">
 			<div class="row no-gutters">
 				<div class="col-lg-8 card-form__body border-left"
@@ -45,34 +43,31 @@
 						<table class="table mb-0 thead-border-top-0">
 							<thead>
 								<tr>
-									<th style="width: 120px;">Project name</th>
-									<th style="width: 37px;">Status</th>
+									<th style="width: 120px;">Task name</th>
+									<th style="width: 37px;">Description</th>
 									<th style="width: 80px;">Start Date</th>
 									<th style="width: 80px;">End Date</th>
 									<th style="width: 24px;">Change</th>
 								</tr>
 							</thead>
 							<tbody class="list" id="staff">
-								<c:forEach var="projects" items="${projects}">
+								<c:forEach var="tasks" items="${tasks}">
 									<tr class="selected">
 										<td>
 											<div class="media align-items-center">
 												<div class="media-body">
-													<span class="js-lists-values-employee-name">${projects.name}</span>
+													<span class="js-lists-values-task-name">${tasks.name}</span>
 												</div>
 											</div>
 										</td>
-										<td><c:choose>
-										<c:when test="${projects.nameOfManager.equals('admin')}"><span class="badge badge-warning">Pending</span></c:when>
-										<c:otherwise><span class="badge badge-success">${projects.nameOfManager}</span></c:otherwise>
-										</c:choose></td>
-										<td><small class="text-muted">${projects.startDate}</small></td>
-										<td><small class="text-muted">${projects.endDate}</small></td>
+										<td><small class="text-muted">${tasks.description}</small></td>
+										<td><small class="text-muted">${tasks.startDate}</small></td>
+										<td><small class="text-muted">${tasks.endDate}</small></td>
 										<td>
 										<button type="button" style="float:left;margin-right:4px;" class="btn btn-warning " 
 										data-toggle="modal" data-target="#modal-signup"><i class="material-icons">settings</i></button>
-										<form action='<c:url value="<%=UrlConst.PROJECTDELETE%>"></c:url>' method="post">
-										<input type="text" value="${projects.name}" name="projectName" hidden >
+										<form action='<c:url value="<%=UrlConst.TASKDELETE%>"></c:url>' method="post">
+										<input type="text" value="${tasks.name}" name="projectName" hidden >
 										<button type="submit" class="btn btn-danger">
                                        <i class="material-icons">close</i></button>
                                        </form>
@@ -97,19 +92,19 @@
                             </a>
                         </div>
 
-                        <form action='<c:url value="<%=UrlConst.PROJECTUPDATE%>"></c:url>' method="post" novalidate>
+                        <form action='<c:url value="<%=UrlConst.TASKUPDATE%>"></c:url>' method="post" novalidate>
                             <div class="form-group">
-                                <label for="username">Project name:</label>
+                                <label for="username">Task name:</label>
                                 <select  name="projectName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
                                 <optgroup label="Project name">
-                                <c:forEach var="projects" items="${projects}">
-                                <option>${projects.name}</option>
+                                <c:forEach var="tasks" items="${tasks}">
+                                <option>${tasks.name}</option>
                                 </c:forEach>
                                 </optgroup>
                                 </select>
                             </div>
                           	<div class="form-group">
-								<label for="email">Email of manager:</label> <input
+								<label for="email">Description:</label> <input
 									class="form-control" type="email" id="email" name="email"
 										placeholder="Enter manager email address" />
 							</div>	
@@ -138,6 +133,6 @@
         </div>
         <!-- // END .modal-dialog -->
     </div>
-    <!-- // END .modal -->
+    <!-- // END .modal -->			
 </body>
 </html>
