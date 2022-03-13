@@ -17,4 +17,10 @@ public class UrlConst {
 	public final static String USERDELETE = "/delete";
 	public final static String USERUPDATE = "/update";
 	public final static String USERCREATE = "/create";
+	
+	public final static String TASKLIST = "/listtask";
+	public final static String TASKDELETE = "/deleletask";
+	public final static String TASKUPDATE = "/updatetask";
+	public final static String TASKCREATE = "/createtask";
+	
 }
