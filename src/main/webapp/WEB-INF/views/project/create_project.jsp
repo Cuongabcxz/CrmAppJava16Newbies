@@ -71,7 +71,9 @@
 							<div class="form-group">
 								<label for="role">Role</label> <select id="role" name="owner"
 									data-toggle="select" class="form-control">
-									<option selected="" value="1">ADMIN</option>
+									<option value="0">ADMIN</option>
+                            		<option value="1">MANAGER</option>
+                            		<option value="2">STAFF</option>
 								</select>
 							</div>
 							<p class="text-success">${message}</p>

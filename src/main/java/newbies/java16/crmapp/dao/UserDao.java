@@ -69,6 +69,7 @@ public class UserDao {
 			statement.setString(4, user.getPhone());
 			statement.setString(5, user.getPassword());
 			statement.setInt(6, user.getRoleId());
+			System.out.println(user.getRoleId());
 			int result=statement.executeUpdate();
 			if (result > 0) {
 				return true;

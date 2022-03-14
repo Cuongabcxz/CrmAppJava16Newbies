@@ -130,8 +130,9 @@
 							<div class="form-group">
 								<label for="role_id">Role Id:</label> <select id="role"
 									name="role_id" data-toggle="select" class="form-control">
-										<option value="2">MANAGER</option>
-                            			<option value="3">STAFF</option>						
+										<option value="0">ADMIN</option>
+                            			<option value="1">MANAGER</option>
+                            			<option value="2">STAFF</option>						
 								</select>
 							</div>
 							<div class="form-group text-center">
