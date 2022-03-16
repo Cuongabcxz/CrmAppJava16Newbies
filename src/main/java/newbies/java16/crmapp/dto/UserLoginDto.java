@@ -2,7 +2,7 @@ package newbies.java16.crmapp.dto;
 
 public class UserLoginDto {
 	
-	private	int  id;
+	private	int id;
 	private String email;
 	private String password;
 	private String name;

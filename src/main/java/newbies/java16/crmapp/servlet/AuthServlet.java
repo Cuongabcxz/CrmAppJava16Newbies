@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.service.AuthService;
 import newbies.java16.crmapp.util.JspConst;
@@ -75,7 +74,7 @@ public class AuthServlet extends HttpServlet {
 		case UrlConst.LOGIN:
 			if (remember !=null) {
 				Cookie cookie = new Cookie("email", email);
-				cookie.setMaxAge(60);
+				cookie.setMaxAge(60*60);
 				resp.addCookie(cookie);
 			}
 			if (service.login(email, password)) {

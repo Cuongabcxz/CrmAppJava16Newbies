@@ -10,6 +10,25 @@ public class TaskDto {
 	private int projectId;
 	private int userId;
 	private int statusId;
+	private int id;
+	private String projectName;
+	
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -68,7 +87,7 @@ public class TaskDto {
 	}
 
 	public TaskDto(String name, String description, Date start_date, Date end_date, int projectId, int userId,
-			int statusId) {
+			int statusId, int id) {
 		this.name = name;
 		this.description = description;
 		this.startDate = start_date;
@@ -76,6 +95,7 @@ public class TaskDto {
 		this.projectId = projectId;
 		this.userId = userId;
 		this.statusId = statusId;
+		this.id = id;
 	}
 
 	public TaskDto() {

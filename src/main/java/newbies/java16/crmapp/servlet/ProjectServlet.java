@@ -3,7 +3,6 @@ package newbies.java16.crmapp.servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,14 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
 
 import newbies.java16.crmapp.dao.UserDao;
 import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.model.Project;
-import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.service.ProjectService;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.UrlConst;
@@ -35,12 +31,12 @@ public class ProjectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProjectService service;
 	private Project project;
-	private UserDao dao;
+	private UserDao userDao;
 
 	@Override
 	public void init() throws ServletException {
 		service = new ProjectService();
-		dao = new UserDao();
+		userDao = new UserDao();
 	}
 
 	@Override
@@ -48,14 +44,13 @@ public class ProjectServlet extends HttpServlet {
 		String path = req.getServletPath();
 		switch (path) {
 		case UrlConst.PROJECT:
-			User user = (User) req.getSession().getAttribute("userlogin");
-			req.setAttribute("userlogin", user);
 			List<Project> projects = service.projectDtoToProject();
-			HttpSession session = req.getSession();
-			session.setAttribute("projects", projects);
+			req.setAttribute("projects", projects);
 			req.getRequestDispatcher(JspConst.PROJECT).forward(req, resp);
 			break;
 		case UrlConst.PROJECTCREATE:
+			List<UserLoginDto> listUsers = userDao.getAll();
+			req.setAttribute("listUsers", listUsers);
 			req.getRequestDispatcher(JspConst.CREATEPROJECT).forward(req, resp);
 			break;
 		default:
@@ -73,7 +68,7 @@ public class ProjectServlet extends HttpServlet {
 			String end_day = req.getParameter("end_day").replace("/", "-");
 			String email = req.getParameter("email");
 			try {
-				UserLoginDto dto = dao.findUserByEmail(email);
+				UserLoginDto dto = userDao.findUserByEmail(email);
 				if (dto.getRoleId() != 3) {
 					int id = service.findIdByName(name);
 					service.update(start_day, end_day, dto.getId(), id);

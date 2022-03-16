@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.model.User;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.ServletConst;

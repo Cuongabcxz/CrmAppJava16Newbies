@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Project</title>
+<title>Create Task</title>
 <link rel="shortcut icon"
 	href='<c:url value="assets/images/favicon.ico"></c:url>' />
 </head>
 <body>
-	<!-- Header Layout Content -->
+		<!-- Header Layout Content -->
 	<div class="container page__heading-container">
 		<div class="page__heading">
 			<div class="d-flex align-items-center">
@@ -21,10 +21,10 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="<%=UrlConst.HOMEPAGE%>"/>'>Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page">
-								Create Project</li>
+								Create Task</li>
 						</ol>
 					</nav>
-					<h1 class="m-0">Create Project</h1>
+					<h1 class="m-0">Create Task</h1>
 				</div>
 				<div class="ml-auto">
 					<a href="" class="btn btn-light"><i
@@ -46,9 +46,9 @@
 						<p class="text-muted">You must fill all of option!</p>
 					</div>
 					<div class="col-lg-8 card-form__body card-body">
-						<form action='<c:url value="<%=UrlConst.PROJECTCREATE%>"></c:url>'method="post">
+						<form action='<c:url value="<%=UrlConst.TASKCREATE%>"></c:url>'method="post">
 							<div class="form-group">
-								<label for="projectName">Project name:</label> <input type="projectName"
+								<label for="projectName">Task name:</label> <input type="projectName"
 									class="form-control" name="projectName" id="projectName">
 							</div>
 							<div class="form-group">
@@ -67,16 +67,6 @@
 								<label for="description">Description:</label>
 								<textarea type="text" cols="20" rows="5" class="form-control" name="description"
 									id="description" aria-label="With textarea"></textarea>
-							</div>
-							<div class="form-group">
-								<label for="role">Owner</label> <select id="role" name="owner"
-									data-toggle="select" class="form-control">
-									<c:forEach items="${listUsers}" var="user">
-									<c:if test="${user.roleId==2}">
-									<option value="${user.id}">${user.email}</option>
-									</c:if>
-									</c:forEach>
-								</select>
 							</div>
 							<p class="text-success">${message}</p>
 							<button class="btn btn-primary w-25 justify-content-center"

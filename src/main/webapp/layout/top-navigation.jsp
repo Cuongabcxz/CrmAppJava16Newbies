@@ -67,11 +67,11 @@
 						<li class="nav-item" style="margin-right:10px"><a class="nav-link active"
 							href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'> Home</a></li>
 						<li class="nav-item dropdown"><a href="#"
-							class="nav-link dropdown-toggle" data-toggle="dropdown">
+							class="nav-link dropdown-toggle" data-toggle="dropdown" <c:if test="${userlogin.role==3}">hidden</c:if>>
 								Project </a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href='<c:url value="${UrlConst.PROJECT}"></c:url>'> Manage Project </a> <a
-									class="dropdown-item" href='<c:url value="${UrlConst.PROJECTCREATE}"></c:url>'> Project Create Project </a>
+								<a class="dropdown-item" href='<c:url value="${UrlConst.PROJECT}"></c:url>'> Project List </a> <a
+									class="dropdown-item" href='<c:url value="${UrlConst.PROJECTCREATE}"></c:url>'> Create Project </a>
 							</div></li>
 						<li class="nav-item dropdown"><a href="#"
 							class="nav-link dropdown-toggle" data-toggle="dropdown" <c:if test="${userlogin.role!=1}">hidden</c:if>> User
@@ -80,7 +80,13 @@
 								<a class="dropdown-item" href='<c:url value="${UrlConst.USERLIST}"></c:url>'> User List </a> 
 								<a class="dropdown-item" href='<c:url value="${UrlConst.USERCREATE }"></c:url>'> Create User </a>
 							</div></li>
-						<li class="nav-item"><a class="nav-link"  href='<c:url value="${UrlConst.TASKLIST}"></c:url>'>Task</a></li>
+						<li class="nav-item dropdown"><a href="#"
+							class="nav-link dropdown-toggle" data-toggle="dropdown">
+								Task </a>
+						<div class="dropdown-menu">
+								<a class="dropdown-item" href='<c:url value="${UrlConst.TASKLIST}"></c:url>'> Task List </a> <a
+									class="dropdown-item" href='<c:url value="${UrlConst.TASKCREATE}"></c:url>'> Create Task </a>
+							</div></li>
 					</ul>
 				</div>
 			</div>

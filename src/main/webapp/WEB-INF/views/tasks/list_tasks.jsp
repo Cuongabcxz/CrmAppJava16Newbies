@@ -18,10 +18,10 @@
 								<ol class="breadcrumb mb-0">
 									<li class="breadcrumb-item"><a  href='<c:url value="${UrlConst.HOMEPAGE}"></c:url>'>Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">
-										Task</li>
+										List Task</li>
 								</ol>
 							</nav>
-							<h1 class="m-0">Task</h1>
+							<h1 class="m-0">List Task</h1>
 						</div>
 						<div class="ml-auto">
 							<a href="" class="btn btn-light"><i
@@ -45,9 +45,11 @@
 								<tr>
 									<th style="width: 120px;">Task name</th>
 									<th style="width: 37px;">Description</th>
-									<th style="width: 80px;">Start Date</th>
-									<th style="width: 80px;">End Date</th>
-									<th style="width: 24px;">Change</th>
+									<th style="width: 150px;">Start Date</th>
+									<th style="width: 150px;">End Date</th>
+									<th style="width: 40px;">Belong</th>
+									<th style="width: 20px;">Status</th>
+									<th style="width: 160px;">Change</th>
 								</tr>
 							</thead>
 							<tbody class="list" id="staff">
@@ -63,14 +65,20 @@
 										<td><small class="text-muted">${tasks.description}</small></td>
 										<td><small class="text-muted">${tasks.startDate}</small></td>
 										<td><small class="text-muted">${tasks.endDate}</small></td>
+										<td><small class="text-muted">${tasks.projectName}</small></td>
+										<c:choose>
+										<c:when test="${tasks.statusId==1}">
+										<td><small class="badge badge-pill badge-success">Finished</small></td>
+										</c:when>
+										<c:otherwise>
+										<td><small class="badge badge-pill badge-warning">Unfinished</small></td>
+										</c:otherwise>
+										</c:choose>
 										<td>
 										<button type="button" style="float:left;margin-right:4px;" class="btn btn-warning " 
 										data-toggle="modal" data-target="#modal-signup"><i class="material-icons">settings</i></button>
-										<form action='<c:url value="<%=UrlConst.TASKDELETE%>"></c:url>' method="post">
-										<input type="text" value="${tasks.name}" name="projectName" hidden >
-										<button type="submit" class="btn btn-danger">
-                                       <i class="material-icons">close</i></button>
-                                       </form>
+										<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-small" onclick="run()">
+										<i class="material-icons">close</i></button>
 										</td>
 										</tr>
 								</c:forEach>
@@ -95,19 +103,14 @@
                         <form action='<c:url value="<%=UrlConst.TASKUPDATE%>"></c:url>' method="post" novalidate>
                             <div class="form-group">
                                 <label for="username">Task name:</label>
-                                <select  name="projectName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
-                                <optgroup label="Project name">
+                                <select  name="taskName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
+                                <optgroup label="Task name">
                                 <c:forEach var="tasks" items="${tasks}">
                                 <option>${tasks.name}</option>
                                 </c:forEach>
                                 </optgroup>
                                 </select>
                             </div>
-                          	<div class="form-group">
-								<label for="email">Description:</label> <input
-									class="form-control" type="email" id="email" name="email"
-										placeholder="Enter manager email address" />
-							</div>	
                             <div class="form-group">
                                 <label for="start_date">Start Date:</label>
                                  <input id="dateRangePickerSample01" name="start_day" type="text" class="form-control" 
@@ -120,6 +123,10 @@
                                  placeholder="Date example" data-toggle="daterangepicker" data-daterangepicker-drops="up" 
                                  data-daterangepicker-start-date="2021/03/06" data-daterangepicker-single-date-picker="true">
                             </div>
+                            	<div class="form-group">
+								<label style="position: relative;">Finished <input style="position: absolute;top:5px;left: 70px;" type="radio" name="status" value ="1" checked></label><br>
+								<label style="position: relative;">Unfinished <input style="position: absolute;top:5px;left: 85px;" type="radio" name="status" value ="2" checked></label><br>
+							</div>	
                             <div class="form-group text-center">
                             	<button type="button" class="btn btn-light" data-dismiss="modal" style="float:left;margin-right:10px">Close</button>
                                 <button class="btn btn-primary" type="submit">Update</button>
@@ -133,6 +140,35 @@
         </div>
         <!-- // END .modal-dialog -->
     </div>
-    <!-- // END .modal -->			
+    <!-- // END .modal -->	
+     <div id="modal-small" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-small-title" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-small-title">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- // END .modal-header -->
+                <div class="modal-body">
+                    <p>Are you sure, you want to delete.</p>
+                </div>
+                <!-- // END .modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <form action='<c:url value="<%=UrlConst.TASKDELETE%>"></c:url>' method="post">
+										<input class="submitTaskId" type="text" value="100" name="taskId" >
+										<input class="submitStatusId" type="text" value="100" name="taskStatus" >
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+                <!-- // END .modal-footer -->
+            </div>
+            <!-- // END .modal-content -->
+        </div>
+        <!-- // END .modal-dialog -->
+    </div>
+    <!-- // END .modal -->		
 </body>
 </html>

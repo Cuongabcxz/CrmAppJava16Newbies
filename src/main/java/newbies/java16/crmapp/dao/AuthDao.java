@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import newbies.java16.crmapp.dbconnection.MySqlConnection;
 import newbies.java16.crmapp.dto.UserLoginDto;

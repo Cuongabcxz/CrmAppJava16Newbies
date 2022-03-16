@@ -13,4 +13,5 @@ public final static String USERLIST = "/WEB-INF/views/users/list_users.jsp";
 public final static String USERCREATE = "/WEB-INF/views/users/create_users.jsp";
 
 public final static String TASKLIST = "/WEB-INF/views/tasks/list_tasks.jsp";
+public static final String TASKCREATE = "/WEB-INF/views/tasks/create_task.jsp";;
 }

@@ -1,8 +1,6 @@
 package newbies.java16.crmapp.service;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
