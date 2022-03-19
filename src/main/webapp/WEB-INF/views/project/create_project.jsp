@@ -43,13 +43,13 @@
 						<p>
 							<strong class="headings-color">Rules</strong>
 						</p>
-						<p class="text-muted">You must fill all of option!</p>
+						<p class="text-muted">You must fill all of options!</p>
 					</div>
 					<div class="col-lg-8 card-form__body card-body">
 						<form action='<c:url value="<%=UrlConst.PROJECTCREATE%>"></c:url>'method="post">
 							<div class="form-group">
 								<label for="projectName">Project name:</label> <input type="projectName"
-									class="form-control" name="projectName" id="projectName">
+									class="form-control" name="projectName" id="projectName" required>
 							</div>
 							<div class="form-group">
 								 <label for="start_date">Start Date:</label>
@@ -66,7 +66,7 @@
 							<div class="form-group">
 								<label for="description">Description:</label>
 								<textarea type="text" cols="20" rows="5" class="form-control" name="description"
-									id="description" aria-label="With textarea"></textarea>
+									id="description" aria-label="With textarea" required></textarea>
 							</div>
 							<div class="form-group">
 								<label for="role">Owner</label> <select id="role" name="owner"

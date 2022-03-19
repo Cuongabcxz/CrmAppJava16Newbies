@@ -41,31 +41,32 @@
 						<div class="form-group">
 							<label for="username">Name:</label> <input class="form-control"
 								type="text" id="username" name="username"
-								placeholder="Enter your name" />
+								placeholder="Enter your name" required/>
 						</div>
 						<div class="form-group">
 							<label for="email">Email Address:</label> <input
 								class="form-control" type="email" id="email" name="email"
-								placeholder="Enter your email address" />
+								placeholder="Enter your email address" required/>
 						</div>
 						<div class="form-group">
 							<label for="password">Password:</label> <input
 								class="form-control" type="password" id="password"
-								name="password" placeholder="Enter your password" />
+								name="password" placeholder="Enter your password" required />
 						</div>
 						<div class="form-group">
 							<label for="address">Address:</label> <input class="form-control"
 								type="text" required="" id="address" name="address"
-								placeholder="Enter your address" />
+								placeholder="Enter your address" required />
 						</div>
 						<div class="form-group">
 							<label for="phone">Phone:</label> <input class="form-control"
 								type="phone" required="" id="text" name="phone"
-								placeholder="Enter your phone number" />
+								placeholder="Enter your phone number" required />
 						</div>
 						<div class="form-group">
 							<label for="role_id">Role Id:</label> <select id="role"
 								name="role_id" data-toggle="select" class="form-control">
+								<option value="1">ADMIN</option>
 								<option value="2">MANAGER</option>
 								<option value="3">STAFF</option>
 							</select>

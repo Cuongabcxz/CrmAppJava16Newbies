@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import newbies.java16.crmapp.dao.UserDao;
 import newbies.java16.crmapp.dto.UserLoginDto;
 import newbies.java16.crmapp.model.Project;
@@ -19,10 +18,8 @@ import newbies.java16.crmapp.service.ProjectService;
 import newbies.java16.crmapp.util.JspConst;
 import newbies.java16.crmapp.util.UrlConst;
 
-@WebServlet(name = "PROJECT", urlPatterns = { UrlConst.PROJECT
-											, UrlConst.PROJECTUPDATE
-											, UrlConst.PROJECTCREATE
-											, UrlConst.PROJECTDELETE})
+@WebServlet(name = "PROJECT", urlPatterns = { UrlConst.PROJECT, UrlConst.PROJECTUPDATE, UrlConst.PROJECTCREATE,
+		UrlConst.PROJECTDELETE })
 public class ProjectServlet extends HttpServlet {
 
 	/**
@@ -69,9 +66,11 @@ public class ProjectServlet extends HttpServlet {
 			String email = req.getParameter("email");
 			try {
 				UserLoginDto dto = userDao.findUserByEmail(email);
-				if (dto.getRoleId() != 3) {
-					int id = service.findIdByName(name);
-					service.update(start_day, end_day, dto.getId(), id);
+				if (dto != null) {
+					if (dto.getRoleId() != 3) {
+						int id = service.findIdByName(name);
+						service.update(start_day, end_day, dto.getId(), id);
+					}
 				}
 			} catch (NullPointerException e) {
 			}
@@ -86,10 +85,12 @@ public class ProjectServlet extends HttpServlet {
 			String owner = req.getParameter("owner");
 			project = new Project(name, description, Date.valueOf(start_day1), Date.valueOf(end_day1),
 					Integer.parseInt(owner));
-			try {
-				service.createProject(project);
-			} catch (SQLException e) {
-				System.out.println("Fail");
+			if (project !=null) {
+				try {
+					service.createProject(project);
+				} catch (SQLException e) {
+					System.out.println("Fail");
+				}
 			}
 			req.setAttribute("message", "Completed !");
 			req.getRequestDispatcher(JspConst.CREATEPROJECT).forward(req, resp);

@@ -55,22 +55,21 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
-		UserLoginDto user = new UserLoginDto();
-		String name = req.getParameter("username");
-		String email = req.getParameter("email");
-		String address = req.getParameter("address");
-		String password = req.getParameter("password");
-		int id =Integer.parseInt(req.getParameter("id"));
-		String phone = req.getParameter("phone");
-		int role_id = Integer.parseInt(req.getParameter("role_id"));
-		user.setEmail(email);
-		user.setAddress(address);
-		user.setPhone(phone);
-		user.setPassword(password);
-		user.setRoleId(role_id);
-		user.setName(name);
 		switch (path) {
 		case UrlConst.USERCREATE:
+			UserLoginDto user = new UserLoginDto();
+			String name = req.getParameter("username");
+			String email = req.getParameter("email");
+			String address = req.getParameter("address");
+			String password = req.getParameter("password");
+			String phone = req.getParameter("phone");
+			int role_id = Integer.parseInt(req.getParameter("role_id"));
+			user.setEmail(email);
+			user.setAddress(address);
+			user.setPhone(phone);
+			user.setPassword(password);
+			user.setRoleId(role_id);
+			user.setName(name);
 			if(userDao.create(user)) {
 				req.setAttribute("message1", "Congratulations ! ");
 			}else {
@@ -79,7 +78,13 @@ public class UserServlet extends HttpServlet {
 			req.getRequestDispatcher(JspConst.USERCREATE).forward(req, resp);
 			break;
 		case UrlConst.USERUPDATE:
-			userDao.update(id, name, email, address, phone, role_id);
+			String name1 = req.getParameter("username");
+			String email1 = req.getParameter("email");
+			String address1 = req.getParameter("address");
+			int id1 =Integer.parseInt(req.getParameter("id"));
+			String phone1 = req.getParameter("phone");
+			int role_id1 = Integer.parseInt(req.getParameter("role_id"));
+			userDao.update(id1, name1, email1, address1, phone1, role_id1);
 			req.setAttribute("users", userDao.getAll());
 			req.getRequestDispatcher(JspConst.USERLIST).forward(req, resp);
 			break;

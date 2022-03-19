@@ -83,7 +83,7 @@ public class AuthServlet extends HttpServlet {
 				session.setAttribute("userlogin", user);
 				resp.sendRedirect(req.getContextPath() + UrlConst.HOMEPAGE);
 			} else {
-				req.setAttribute("message", "Email or passoword is incorrect");
+				req.setAttribute("message", "Email or password is incorrect");
 				req.getRequestDispatcher(JspConst.LOGIN).forward(req, resp);
 			}
 			break;

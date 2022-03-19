@@ -54,17 +54,17 @@
 			<h3 style="text-align: center;">LIST OF EMPLOYEES</h3>
 			<thead>
 				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Email</th>
-					<th scope="col">Address</th>
-					<th scope="col">Phone</th>
-					<th scope="col">Action</th>
+					<th style="width: 10px;" >ID</th>
+					<th style="width: 120px;" >Name</th>
+					<th style="width: 120px;" >Email</th>
+					<th style="width: 120px;" >Address</th>
+					<th style="width: 120px;" >Phone</th>
+					<th style="width: 220px;" >Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${users}" var="item">
-					<tr id="${item.id}">
+						<tr id="${item.id}">
 						<td class="row-data">${item.id}</td>
 						<td class="row-data">${item.name }</td>
 						<td class="row-data">${item.email }</td>

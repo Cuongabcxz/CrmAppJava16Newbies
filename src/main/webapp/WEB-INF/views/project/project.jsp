@@ -49,7 +49,7 @@
 									<th style="width: 37px;">Status</th>
 									<th style="width: 80px;">Start Date</th>
 									<th style="width: 80px;">End Date</th>
-									<th style="width: 24px;">Change</th>
+									<th style="width: 120px;">Change</th>
 								</tr>
 							</thead>
 							<tbody class="list" id="staff">
@@ -63,7 +63,7 @@
 											</div>
 										</td>
 										<td><c:choose>
-										<c:when test="${projects.nameOfManager.equals('admin')}"><span class="badge badge-warning">Pending</span></c:when>
+										<c:when test="${projects.nameOfManager.equals('admin@gmail.com')}"><span class="badge badge-warning">Pending</span></c:when>
 										<c:otherwise><span class="badge badge-success">${projects.nameOfManager}</span></c:otherwise>
 										</c:choose></td>
 										<td><small class="text-muted">${projects.startDate}</small></td>

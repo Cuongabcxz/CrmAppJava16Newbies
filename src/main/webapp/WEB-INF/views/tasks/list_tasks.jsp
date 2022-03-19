@@ -75,7 +75,7 @@
 										</c:otherwise>
 										</c:choose>
 										<td>
-										<button type="button" style="float:left;margin-right:4px;" class="btn btn-warning " 
+									<button type="button" style="float:left;margin-right:4px;" class="btn btn-warning " 
 										data-toggle="modal" data-target="#modal-signup"><i class="material-icons">settings</i></button>
 										<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-small" onclick="run()">
 										<i class="material-icons">close</i></button>
@@ -141,34 +141,5 @@
         <!-- // END .modal-dialog -->
     </div>
     <!-- // END .modal -->	
-     <div id="modal-small" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-small-title" aria-hidden="true" data-backdrop="false">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal-small-title">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- // END .modal-header -->
-                <div class="modal-body">
-                    <p>Are you sure, you want to delete.</p>
-                </div>
-                <!-- // END .modal-body -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                    <form action='<c:url value="<%=UrlConst.TASKDELETE%>"></c:url>' method="post">
-										<input class="submitTaskId" type="text" value="100" name="taskId" >
-										<input class="submitStatusId" type="text" value="100" name="taskStatus" >
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                    </form>
-                </div>
-                <!-- // END .modal-footer -->
-            </div>
-            <!-- // END .modal-content -->
-        </div>
-        <!-- // END .modal-dialog -->
-    </div>
-    <!-- // END .modal -->		
 </body>
 </html>
