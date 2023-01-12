@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CrmAppJava16Newbies:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>CrmAppJava16Newbies</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="CrmAppJava16Newbies-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="CrmAppJava16Newbies:war exploded" />
+    </root>
+  </artifact>
+</component>

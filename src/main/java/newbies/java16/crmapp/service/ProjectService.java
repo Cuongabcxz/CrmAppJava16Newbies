@@ -18,7 +18,7 @@ public class ProjectService {
 	public List<Project> projectDtoToProject() {
 		List<Project> projects = new ArrayList<Project>();
 		try {
-			for (ProjectDto dto : dao.findAll()) {
+			for (ProjectDto dto : dao.findAll()) { //Hiển thị dữ liệu ra view
 				Project project = new Project();
 				project.setNameOfManager(dto.getNameOfManager());
 				project.setEndDate(dto.getEndDate());
@@ -32,7 +32,7 @@ public class ProjectService {
 		}
 		return projects;
 	}
-	public int findIdByName(String name) {
+	public int findIdByName(String name) { //Find ra sản phẩm
 		return dao.findIdByName(name);
 	}
 	public void update(String start_day, String end_date, int owner, int id) {

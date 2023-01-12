@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Create User</title>
 <link rel="shortcut icon"
-	href='<c:url value="assets/images/favicon.ico"></c:url>' />
+	href='<c:url value="/assets/images/favicon.ico"></c:url>' />
 </head>
 <body>
 	<!-- Header Layout Content -->
@@ -59,12 +59,12 @@
 								placeholder="Enter your address" required />
 						</div>
 						<div class="form-group">
-							<label for="phone">Phone:</label> <input class="form-control"
+							<%--@declare id="phone"--%><label for="phone">Phone:</label> <input class="form-control"
 								type="phone" required="" id="text" name="phone"
 								placeholder="Enter your phone number" required />
 						</div>
 						<div class="form-group">
-							<label for="role_id">Role Id:</label> <select id="role"
+							<%--@declare id="role_id"--%><label for="role_id">Role Id:</label> <select id="role"
 								name="role_id" data-toggle="select" class="form-control">
 								<option value="1">ADMIN</option>
 								<option value="2">MANAGER</option>

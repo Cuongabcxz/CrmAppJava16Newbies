@@ -19,11 +19,12 @@ public class AuthService {
 	public User toUser(String email, String password) {
 		UserLoginDto dto = null;
 		try {
+			//Kiểm tra nếu chưa có user thì login
 			dto = dao.login(email, password);
 		} catch (SQLException e) {
 			return user;
 		}
-		user = new User();
+		user = new User(); //Tạo mới đối tượng user
 		user.setEmail(dto.getEmail());
 		user.setName(dto.getName());
 		user.setRole(dto.getRoleId());
@@ -46,7 +47,7 @@ public class AuthService {
 
 	public boolean sigup(String email, String password, String name) {
 		try {
-			if (dao.checkUser(email)) {
+			if (dao.checkUser(email)) { //Kiểm tra email đã tồn tại
 				return dao.createUser(email, password, name);
 			}
 		} catch (SQLException e) {

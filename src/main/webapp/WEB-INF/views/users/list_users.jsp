@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Users</title>
-<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
+<link rel="shortcut icon" href='<c:url value="/assets/images/favicon.ico"></c:url>'/>
 </head>
 <body>
 	<script>
@@ -107,28 +107,29 @@
 								<input class="form-control" type="hidden" name="id">
 							</div>
 							<div class="form-group">
-								<label for="username">Name:</label> <input class="form-control"
+								<%--@declare id="username"--%><label for="username">Name:</label>
+								<input class="form-control"
 									type="text" name="username" />
 							</div>
 							<div class="form-group">
-								<label for="email">Email Address:</label> <input
+								<%--@declare id="email"--%><label for="email">Email Address:</label> <input
 									class="form-control" type="text" name="email" />
 							</div>
 							<div class="form-group" type="hidden">
-								<label for="password">Password:</label> <input
+								<%--@declare id="password"--%><label for="password">Password:</label> <input
 									class="form-control" type="password" name="password"
 									readonly="readonly" />
 							</div>
 							<div class="form-group">
-								<label for="address">Address:</label> <input
+								<%--@declare id="address"--%><label for="address">Address:</label> <input
 									class="form-control" type="text" name="address" />
 							</div>
 							<div class="form-group">
-								<label for="phone">Phone:</label> <input class="form-control"
+								<%--@declare id="phone"--%><label for="phone">Phone:</label> <input class="form-control"
 									id="text" name="phone" />
 							</div>
 							<div class="form-group">
-								<label for="role_id">Role:</label> <select id="role"
+								<%--@declare id="role_id"--%><label for="role_id">Role:</label> <select id="role"
 									name="role_id" data-toggle="select" class="form-control">
 										<option value="1">ADMIN</option>
                             			<option value="2">MANAGER</option>

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Manager Project</title>
-<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
+<link rel="shortcut icon" href='<c:url value="/assets/images/favicon.ico"></c:url>'/>
 </head>
 <body>
 		<!-- Header Layout Content -->
@@ -99,7 +99,7 @@
 
                         <form action='<c:url value="<%=UrlConst.PROJECTUPDATE%>"></c:url>' method="post" novalidate>
                             <div class="form-group">
-                                <label for="username">Project name:</label>
+                                <%--@declare id="username"--%><label for="username">Project name:</label>
                                 <select  name="projectName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
                                 <optgroup label="Project name">
                                 <c:forEach var="projects" items="${projects}">
@@ -114,13 +114,13 @@
 										placeholder="Enter manager email address" />
 							</div>	
                             <div class="form-group">
-                                <label for="start_date">Start Date:</label>
+                                <%--@declare id="start_date"--%><label for="start_date">Start Date:</label>
                                  <input id="dateRangePickerSample01" name="start_day" type="text" class="form-control" 
                                  placeholder="Date example" data-toggle="daterangepicker" data-daterangepicker-drops="up" 
                                  data-daterangepicker-start-date="2021/03/06" data-daterangepicker-single-date-picker="true">
                             </div>
                              <div class="form-group">
-                                <label for="end_date">End Date:</label>
+                                <%--@declare id="end_date"--%><label for="end_date">End Date:</label>
                                  <input id="dateRangePickerSample01" name="end_day" type="text" class="form-control" 
                                  placeholder="Date example" data-toggle="daterangepicker" data-daterangepicker-drops="up" 
                                  data-daterangepicker-start-date="2021/03/06" data-daterangepicker-single-date-picker="true">

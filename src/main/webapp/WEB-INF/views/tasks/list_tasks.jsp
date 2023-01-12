@@ -102,7 +102,7 @@
 
                         <form action='<c:url value="<%=UrlConst.TASKUPDATE%>"></c:url>' method="post" novalidate>
                             <div class="form-group">
-                                <label for="username">Task name:</label>
+                                <%--@declare id="username"--%><label for="username">Task name:</label>
                                 <select  name="taskName" style="padding: 5px; border-radius: 0.25rem;border: solid; border-color: cadetblue;">
                                 <optgroup label="Task name">
                                 <c:forEach var="tasks" items="${tasks}">
@@ -112,13 +112,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="start_date">Start Date:</label>
+                                <%--@declare id="start_date"--%><label for="start_date">Start Date:</label>
                                  <input id="dateRangePickerSample01" name="start_day" type="text" class="form-control" 
                                  placeholder="Date example" data-toggle="daterangepicker" data-daterangepicker-drops="up" 
                                  data-daterangepicker-start-date="2021/03/06" data-daterangepicker-single-date-picker="true">
                             </div>
                              <div class="form-group">
-                                <label for="end_date">End Date:</label>
+                                <%--@declare id="end_date"--%><label for="end_date">End Date:</label>
                                  <input id="dateRangePickerSample01" name="end_day" type="text" class="form-control" 
                                  placeholder="Date example" data-toggle="daterangepicker" data-daterangepicker-drops="up" 
                                  data-daterangepicker-start-date="2021/03/06" data-daterangepicker-single-date-picker="true">

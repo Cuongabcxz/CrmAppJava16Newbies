@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>HomePage</title>
-<link rel="shortcut icon" href='<c:url value="assets/images/favicon.ico"></c:url>'/>
+<link rel="shortcut icon" href='<c:url value="/assets/images/favicon.ico"></c:url>'/>
 </head>
 <body>
 		<!-- Header Layout Content -->
